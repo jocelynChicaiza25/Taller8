@@ -5,11 +5,12 @@
  */
 package patrones;
 
-import Patrones.Manejador;
+import patrones.Manejador;
 import patrones.Account;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class AtmUK {
     protected final Currency currency=Locale.UK;
@@ -53,12 +54,13 @@ public class AtmUK {
         System.out.println("2. Deposit");
         System.out.println("3. Balance");
         System.out.println("4. Balance ATM");
-        choice = in.nextInt();
+        Scanner sc=  new Scanner(System.in);
+        choice = sc.nextInt();
         switch(choice){
             case 1:
                 float amount; 
                 System.out.println("Please enter amount to withdraw: "); 
-                amount = in.nextFloat();
+                amount = sc.nextFloat();
                 if(amount > cuenta.getAmount() || amount == 0){
                     System.out.println("You have insufficient funds\n\n"); 
                     anotherTransaction(cuenta); // ask if they want another transaction
@@ -78,7 +80,7 @@ public class AtmUK {
                     // option number 2 is depositing 
                     float deposit; 
                     System.out.println("Please enter amount you would wish to deposit: "); 
-                    deposit = in.nextFloat();
+                    deposit = sc.nextFloat();
                     // Todo: actualizar tanto la cuenta como el atm
                     
                     // Todo: Mostrar resumen de transacción o error
@@ -102,7 +104,7 @@ public class AtmUK {
     }
     public static void anotherTransaction(Account cuenta){
         System.out.println("Do you want another transaction?\n\nPress 1 for another transaction\n2 To exit");
-        anotherTransaction = in.nextInt();
+        anotherTransaction = sc.nextInt();
         if(anotherTransaction == 1){
             transaction(cuenta); // call transaction method
         } else if(anotherTransaction == 2){
