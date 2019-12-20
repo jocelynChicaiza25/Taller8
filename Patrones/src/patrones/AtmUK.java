@@ -13,7 +13,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class AtmUK {
-    protected final Currency currency=Locale.UK;
+    protected final Locale currency=Locale.UK;
     protected double dinero = 0;
     protected ArrayList <Manejador> manejadores; // Cada manejador puede entregar dinero de una sola denominación
 
@@ -104,7 +104,8 @@ public class AtmUK {
     }
     public static void anotherTransaction(Account cuenta){
         System.out.println("Do you want another transaction?\n\nPress 1 for another transaction\n2 To exit");
-        anotherTransaction = sc.nextInt();
+        Scanner sc =  new Scanner(System.in);
+        int anotherTransaction = sc.nextInt();
         if(anotherTransaction == 1){
             transaction(cuenta); // call transaction method
         } else if(anotherTransaction == 2){
