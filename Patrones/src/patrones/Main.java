@@ -9,6 +9,8 @@ import ChainResponsibility.Manejador;
 import ChainResponsibility.ManejadorCash;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+import static patrones.AtmUK.transaction;
 
 public class Main {
 
@@ -51,7 +53,18 @@ public class Main {
         cuentas.add(cuenta10);
 
         // Menú principal para seleccionar una de las 10 cuentas solo con el id
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el id de su cuenta:");
+        int id=sc.nextInt();
+        
         // Mostrar el menú para realizar transacciones en el cajero automático
+        for(int i=0; i<cuentas.size();i++){
+            if(cuentas.get(i).getId()==id){
+                transaction(cuentas.get(i));
+            
+            }
+        
+        }
         //transaccion(ac);// escoger cuenta primero 
     }
 
