@@ -1,11 +1,13 @@
+package patrones;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package patrones;
 
-import patrones.Manejador;
+
+import ChainResponsibility.Manejador;
 import patrones.Account;
 import java.util.ArrayList;
 import java.util.Currency;
@@ -34,7 +36,13 @@ public class AtmUK {
 
     // -----------------
     public void ingresarDinero(double dinero, int denominacion) {
-        this.dinero += dinero;
+          for(Manejador manejadores: manejadores){
+            if(manejadores.getDenominacion()==denominacion){
+                manejadores.depositar(dinero,denominacion);
+            }
+        
+        }
+            this.dinero += dinero;
         // Todo: Sólo se puede depositar billetes de una sola denominación y agregarse al manejador correspondiente
     }
 
